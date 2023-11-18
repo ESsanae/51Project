@@ -1,0 +1,71 @@
+C51 COMPILER V9.54   MAIN                                                                  11/10/2023 22:46:50 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          #include "MatrixLED.h"
+   4          
+   5          unsigned char Animation[]={ 0x60,0x10,0x20,0xFF,0xF8,0x27,0x10,0x08,
+   6                                                                  0x00,0xC0,0x20,0xFF,0xFA,0x24,0xC0,0x00,
+   7                                                                  0x00,0x00,0x30,0x7F,0xFE,0xA0,0x00,0x00,
+   8                                                                  0x00,0x00,0x20,0x7F,0xFA,0xA4,0x20,0x40,
+   9                                                                  0x00,0x00,0x30,0x7F,0xF8,0x36,0x00,0x00,
+  10                                                                  0x00,0x00,0x37,0x78,0xF8,0xB6,0x01,0x00,
+  11                                                                  0x00,0x20,0x7F,0xF8,0xB4,0x02,0x01,0x00,
+  12                                                                  0x00,0x00,0x19,0x3E,0x7C,0x54,0x03,0x00,
+  13                                                                  0x00,0x00,0x01,0x02,0x1C,0x3C,0x7B,0x58,
+  14                                                                  0x00,0x00,0x19,0x3E,0x7C,0x54,0x03,0x00,
+  15                                                                  0x00,0x20,0x7F,0xF8,0xB4,0x02,0x01,0x00,
+  16                                                                  0x00,0x00,0x23,0x7C,0xF8,0xB6,0x01,0x00,
+  17                                                                  0x00,0x00,0x01,0x02,0x24,0x78,0xFF,0xB0,};
+  18                                                                  
+  19          void main()
+  20          {   unsigned char i,Offset,count;
+  21   1              MatrixLED_Init();
+  22   1              while(1)
+  23   1              {       
+  24   2                              for(i=0;i<8;i++)
+  25   2                              {
+  26   3                                      MatrixLED_ShowColumn(i,Animation[i+Offset]);
+  27   3      
+  28   3                              }
+  29   2                  count++;
+  30   2                              if(count>20)
+  31   2                              {
+  32   3                                  count=0;
+  33   3                                  Offset+=8;
+  34   3                                      if(Offset>96)
+  35   3                                      {
+  36   4                                              Offset=0;
+  37   4                                      }
+  38   3                              }
+  39   2              }
+  40   1      }
+  41          
+  42          
+  43          
+  44          
+  45          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     59    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =    104       3
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MAIN                                                                  11/10/2023 22:46:50 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
